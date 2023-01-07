@@ -32,6 +32,17 @@ def all(db: Session = Depends(get_db)):
     return blogs
 
 
+@app.delete("/blog/{id}", status_code=status.HTTP_204_NO_CONTENT)
+def destroy(id, response: Response, db: Session = Depends(get_db)):
+    blog = (
+        db.query(models.Blog)
+        .filter(models.Blog.id == id)
+        .delete(synchronize_session=False)
+    )
+    db.commit()
+    return "done"
+
+
 @app.get("/blog/{id}", status_code=200)
 def show(id, response: Response, db: Session = Depends(get_db)):
     blog = db.query(models.Blog).filter(models.Blog.id == id).first()
