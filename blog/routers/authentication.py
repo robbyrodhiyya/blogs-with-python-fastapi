@@ -1,7 +1,9 @@
+from datetime import timedelta
 from fastapi import APIRouter, Depends, HTTPException, status
-from .. import schemas, database, models
+from .. import schemas, database, models, token
 from sqlalchemy.orm import Session
 from ..hasing import Hash
+
 
 router = APIRouter(tags=["Authentication"])
 
@@ -17,5 +19,8 @@ def login(request: schemas.Login, db: Session = Depends(database.get_db)):
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND, detail="Incorrect Password"
         )
-    # generate token
+
+    access_token = token.create_access_token(data={"sub": user.email})
+    return {"access_token": access_token, "token_type": "bearer"}
+
     return user
