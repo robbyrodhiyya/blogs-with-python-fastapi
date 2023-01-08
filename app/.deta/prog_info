@@ -1,0 +1,1 @@
+{"id":"fd6632ae-0ac0-48b1-a1f1-995255bdd9c1","space":47171,"runtime":"python3.9","name":"app","path":"2ybg8m","project":"c0nvbl5b","account":"144798365827","region":"ap-southeast-1","deps":["fastapi==0.88.0","SQLAlchemy==1.4.46","uvicorn==0.20.0","passlib==1.7.4","python-jose==3.3.0","python-multipart==0.0.5"],"envs":null,"public":true,"log_level":"debug","cron":""}
