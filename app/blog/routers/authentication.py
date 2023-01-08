@@ -1,9 +1,9 @@
 from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi import APIRouter, Depends, HTTPException, status
-from blog import schemas, database, models, token
+from .. import schemas, database, models, token
 from sqlalchemy.orm import Session
-from blog.hasing import Hash
+from ..hasing import Hash
 
 
 router = APIRouter(tags=["Authentication"])

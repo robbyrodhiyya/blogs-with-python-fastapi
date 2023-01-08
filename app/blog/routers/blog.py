@@ -1,8 +1,8 @@
 from typing import List
 from fastapi import APIRouter, Depends, status
-from blog import schemas, database, models, oauth2
+from .. import schemas, database, models, oauth2
 from sqlalchemy.orm import Session
-from blog.repository import blog
+from ..repository import blog
 
 router = APIRouter(prefix="/blog", tags=["Blogs"])
 
